@@ -1,0 +1,404 @@
+/* ========================================
+   Dr. Jelena Joksić - Estetska Medicina
+   Fonts: Tenor Sans + Nunito Sans
+   Palette: cream, dusty rose, warm gold
+   ======================================== */
+
+/* --- Variables --- */
+:root {
+  --bg: #fdf9f6;
+  --dark: #1e1814;
+  --primary: #8b5e52;
+  --primary-light: #a87d70;
+  --accent: #c4956a;
+  --accent-light: #dbb48e;
+  --text: #3d2d28;
+  --text-muted: #8a7570;
+  --surface: #f5ede8;
+  --surface-2: #f0e5df;
+  --border: #e8d5cc;
+  --white: #ffffff;
+  --font-heading: 'Tenor Sans', serif;
+  --font-body: 'Nunito Sans', sans-serif;
+  --header-height: 80px;
+  --radius: 6px;
+  --radius-lg: 12px;
+  --shadow: 0 4px 24px rgba(139, 94, 82, 0.08);
+  --shadow-lg: 0 12px 48px rgba(139, 94, 82, 0.14);
+  --transition: 0.3s ease;
+}
+
+/* --- Reset --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; transition: color var(--transition); }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* --- Container --- */
+.container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* --- Typography --- */
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; line-height: 1.2; color: var(--dark); }
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); }
+h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); }
+
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title { margin-bottom: 16px; }
+.section-subtitle { font-size: 1.05rem; color: var(--text-muted); max-width: 580px; }
+.text-center { text-align: center; }
+.text-center .section-subtitle { margin: 0 auto; }
+
+/* --- Divider --- */
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  margin: 20px 0 32px;
+}
+.text-center .divider { margin: 20px auto 32px; }
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+}
+.btn-primary { background: var(--primary); color: var(--white); }
+.btn-primary:hover { background: var(--dark); }
+.btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+.btn-outline:hover { background: var(--primary); color: var(--white); }
+.btn-white { background: var(--white); color: var(--dark); }
+.btn-white:hover { background: var(--surface); }
+
+/* --- Header --- */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  z-index: 100;
+  background: rgba(253, 249, 246, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.header.scrolled { border-color: var(--border); box-shadow: var(--shadow); }
+.header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+.logo { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-name { font-family: var(--font-heading); font-size: 1.1rem; color: var(--dark); font-weight: 400; }
+.logo-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent); font-weight: 700; }
+
+.nav { display: flex; align-items: center; gap: 32px; }
+.nav a { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); transition: color var(--transition); }
+.nav a:hover { color: var(--primary); }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.menu-toggle span { display: block; width: 24px; height: 2px; background: var(--dark); transition: all 0.3s; }
+
+/* --- Hero --- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--header-height) + 60px) 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../images/hero-bg.jpg') center/cover no-repeat;
+  opacity: 0.07;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+  border: 1px solid var(--accent-light);
+  padding: 6px 16px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+.hero h1 { color: var(--dark); margin-bottom: 20px; }
+.hero h1 em { font-style: normal; color: var(--primary); }
+.hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 36px; max-width: 460px; line-height: 1.8; }
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+.hero-image {
+  position: relative;
+}
+.hero-image img {
+  width: 100%;
+  height: 580px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 60%;
+  height: 60%;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+.hero-image::after {
+  display: none;
+}
+.hero-credential {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.95);
+  border-left: 3px solid var(--accent);
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.82rem;
+  backdrop-filter: blur(4px);
+}
+.hero-credential strong { display: block; font-family: var(--font-heading); font-size: 1rem; color: var(--dark); margin-bottom: 2px; }
+.hero-credential span { color: var(--text-muted); }
+
+/* --- O doktorki --- */
+.about { padding: 100px 0; background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+.stat-card { background: var(--surface); padding: 20px; border-radius: var(--radius); text-align: center; border-top: 2px solid var(--accent-light); }
+.stat-number { font-family: var(--font-heading); font-size: 2rem; color: var(--primary); display: block; }
+.stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.credentials { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+.credential-item { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; color: var(--text); }
+.credential-item::before { content: '✓'; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; min-width: 22px; background: var(--primary); color: white; border-radius: 50%; font-size: 0.75rem; font-weight: 700; }
+
+/* --- O estetskoj medicini --- */
+.aesthetic-medicine { padding: 100px 0; background: var(--dark); }
+.aesthetic-medicine .section-label { color: var(--accent-light); }
+.aesthetic-medicine .section-title { color: var(--white); }
+.aesthetic-medicine .divider { background: var(--accent); }
+.aesthetic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+.aesthetic-card {
+  background: rgba(255,255,255,0.04);
+  padding: 40px 32px;
+  transition: background var(--transition);
+}
+.aesthetic-card:hover { background: rgba(255,255,255,0.07); }
+.aesthetic-card-icon { font-size: 2rem; margin-bottom: 16px; }
+.aesthetic-card h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 12px; }
+.aesthetic-card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.7; }
+.aesthetic-intro { max-width: 780px; margin: 0 auto; text-align: center; color: rgba(255,255,255,0.75); font-size: 1.05rem; line-height: 1.85; }
+
+/* --- Tretmani --- */
+.treatments { padding: 100px 0; background: var(--bg); }
+.treatments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 60px; }
+.treatment-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition);
+}
+.treatment-card:hover { box-shadow: var(--shadow-lg); }
+.treatment-header { padding: 36px 36px 24px; border-bottom: 1px solid var(--border); }
+.treatment-icon { font-size: 2.5rem; margin-bottom: 16px; }
+.treatment-header h3 { font-size: 1.5rem; margin-bottom: 8px; }
+.treatment-duration { display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); background: var(--surface); padding: 4px 12px; border-radius: 2px; margin-top: 8px; }
+.treatment-body { padding: 24px 36px 36px; }
+.treatment-body p { color: var(--text-muted); margin-bottom: 20px; line-height: 1.7; }
+.zone-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 12px; }
+.zones-list { display: flex; flex-direction: column; gap: 8px; }
+.zone-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; }
+.zone-dot { width: 6px; height: 6px; min-width: 6px; background: var(--accent); border-radius: 50%; margin-top: 8px; }
+.zone-text strong { color: var(--dark); display: block; font-size: 0.88rem; }
+.zone-text span { color: var(--text-muted); font-size: 0.82rem; }
+.treatment-note { margin-top: 24px; padding: 16px; background: var(--surface); border-radius: var(--radius); font-size: 0.88rem; color: var(--text-muted); border-left: 3px solid var(--accent); }
+
+/* --- Proces --- */
+.process { padding: 100px 0; background: var(--surface); }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 60px; position: relative; }
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 32px; left: 10%; right: 10%;
+  height: 1px;
+  background: var(--border);
+}
+.process-step { text-align: center; position: relative; }
+.step-number {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--primary);
+  position: relative;
+  z-index: 1;
+}
+.process-step h3 { margin-bottom: 10px; font-size: 1rem; }
+.process-step p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* --- Prednosti --- */
+.benefits { padding: 100px 0; background: var(--white); }
+.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px; }
+.benefit-card { padding: 32px; border: 1px solid var(--border); border-radius: var(--radius-lg); transition: all var(--transition); }
+.benefit-card:hover { border-color: var(--accent-light); box-shadow: var(--shadow); transform: translateY(-4px); }
+.benefit-icon { font-size: 1.8rem; margin-bottom: 16px; }
+.benefit-card h3 { margin-bottom: 10px; font-size: 1.05rem; }
+.benefit-card p { color: var(--text-muted); font-size: 0.92rem; }
+
+/* --- Iskustva --- */
+.testimonials { padding: 100px 0; background: var(--primary); }
+.testimonials .section-label { color: var(--accent-light); }
+.testimonials .section-title { color: var(--white); }
+.testimonials .divider { background: var(--accent-light); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+.testimonial-card { background: rgba(255,255,255,0.1); padding: 32px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.15); }
+.testimonial-stars { color: var(--accent-light); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 3px; }
+.testimonial-text { color: rgba(255,255,255,0.9); font-size: 1rem; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.testimonial-author { color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+/* --- FAQ --- */
+.faq-section { padding: 100px 0; background: var(--bg); }
+.faq-list { max-width: 760px; margin: 60px auto 0; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { border: 1px solid var(--border); border-radius: var(--radius); background: var(--white); transition: border-color var(--transition); }
+.faq-item.open { border-color: var(--accent); }
+.faq-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 20px 24px; background: none; border: none; color: var(--dark); font-family: var(--font-body); font-size: 0.98rem; font-weight: 700; cursor: pointer; text-align: left; gap: 16px; }
+.faq-icon { font-size: 1.4rem; color: var(--accent); transition: transform var(--transition); flex-shrink: 0; line-height: 1; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-body { display: none; padding: 0 24px 20px; color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+.faq-item.open .faq-body { display: block; }
+
+/* --- CTA banner --- */
+.cta-banner {
+  padding: 80px 0;
+  background: var(--surface-2);
+  text-align: center;
+}
+.cta-banner h2 { margin-bottom: 16px; }
+.cta-banner p { color: var(--text-muted); margin-bottom: 32px; font-size: 1.05rem; }
+
+/* --- Kontakt --- */
+.contact { padding: 100px 0; background: var(--white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; margin-top: 60px; }
+.contact-info { display: flex; flex-direction: column; gap: 28px; }
+.contact-item { display: flex; gap: 16px; align-items: flex-start; }
+.contact-item-icon { width: 44px; height: 44px; min-width: 44px; background: var(--surface); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.contact-item-text h4 { font-family: var(--font-heading); font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-weight: 400; }
+.contact-item-text p, .contact-item-text a { color: var(--dark); font-size: 1rem; font-weight: 600; }
+.contact-item-text a:hover { color: var(--primary); }
+.hours-grid { display: flex; flex-direction: column; gap: 6px; }
+.hours-row { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); }
+.hours-row span:last-child { color: var(--dark); font-weight: 600; }
+
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+.form-group input, .form-group textarea, .form-group select {
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--dark);
+  background: var(--bg);
+  transition: border-color var(--transition);
+  outline: none;
+  font-size: 16px;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--primary); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+/* --- Footer --- */
+.footer { background: var(--dark); padding: 48px 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-logo .logo-name { color: var(--white); font-size: 1rem; }
+.footer-logo .logo-title { color: var(--accent); }
+.footer-text { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: rgba(255,255,255,0.5); font-size: 0.82rem; transition: color var(--transition); }
+.footer-links a:hover { color: var(--accent); }
+
+/* --- Fade-in animations --- */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* --- Mobile nav --- */
+.nav.open { display: flex; flex-direction: column; position: fixed; top: var(--header-height); left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 24px; gap: 20px; box-shadow: var(--shadow); }
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 992px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero-image { order: -1; }
+  .hero-image img { height: 380px; }
+  .hero-image::before, .hero-image::after { display: none; }
+  .hero-credential { left: 0; bottom: 16px; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .aesthetic-grid { grid-template-columns: 1fr 1fr; }
+  .treatments-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+@media (max-width: 768px) {
+  .nav { display: none; }
+  .menu-toggle { display: flex; }
+  .aesthetic-grid { grid-template-columns: 1fr; gap: 2px; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .hero { padding-top: calc(var(--header-height) + 32px); }
+}
+
+@media (max-width: 480px) {
+  .process-steps { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .hero-cta { flex-direction: column; align-items: flex-start; }
+}
