@@ -6,25 +6,25 @@
 
 /* --- Variables --- */
 :root {
-  --bg: #fdf9f6;
-  --dark: #1e1814;
-  --primary: #8b5e52;
-  --primary-light: #a87d70;
-  --accent: #c4956a;
-  --accent-light: #dbb48e;
-  --text: #3d2d28;
-  --text-muted: #8a7570;
-  --surface: #f5ede8;
-  --surface-2: #f0e5df;
-  --border: #e8d5cc;
+  --bg: #ffffff;
+  --dark: #0c122d;
+  --primary: #031f3e;
+  --primary-light: #1a3a5c;
+  --accent: #daa51f;
+  --accent-light: #e8c55a;
+  --text: #424242;
+  --text-muted: #575c74;
+  --surface: #f0f4f8;
+  --surface-2: #e8eef5;
+  --border: #dddddd;
   --white: #ffffff;
   --font-heading: 'Tenor Sans', serif;
   --font-body: 'Nunito Sans', sans-serif;
   --header-height: 80px;
   --radius: 6px;
   --radius-lg: 12px;
-  --shadow: 0 4px 24px rgba(139, 94, 82, 0.08);
-  --shadow-lg: 0 12px 48px rgba(139, 94, 82, 0.14);
+  --shadow: 0 4px 24px rgba(3, 31, 62, 0.08);
+  --shadow-lg: 0 12px 48px rgba(3, 31, 62, 0.14);
   --transition: 0.3s ease;
 }
 
